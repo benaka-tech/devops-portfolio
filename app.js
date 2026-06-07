@@ -451,7 +451,7 @@ Available commands:
       about: () => {
         return `
 <span class="text-purple">=== USER SPEC PROFILE MODULE ===</span>
-Name:        Benaka
+Name:        Jayanth C
 Role:        DevOps & Cloud Site Reliability Engineer
 Status:      Actively looking for exciting projects & roles
 Bio:         I specialize in building bridges between software development and IT infrastructure
@@ -621,7 +621,7 @@ node-prod-cluster status:
       // Step 0: Source Code Trigger
       [
         '[GITOPS] GitWebhook hook payload detected from master branch.',
-        '[GITOPS] Commit ID: c9ca69e3 - Author: Benaka - "feat: optimize database connections"',
+        '[GITOPS] Commit ID: c9ca69e3 - Author: Jayanth C - "feat: optimize database connections"',
         '[SYSTEM] Initializing build agent virtual workspace environment...',
         '[SYSTEM] Pulling base repository manifest configs from git HEAD...'
       ],
@@ -1307,6 +1307,42 @@ Results:
   const varHeaderHeight = () => {
     return parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 70;
   };
+
+  /* ==========================================================================
+     MOBILE MENU TOGGLE
+     ========================================================================== */
+  const initMobileMenu = () => {
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const header = document.querySelector('.header');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const overlay = document.getElementById('mobile-menu-overlay');
+
+    if (mobileMenuBtn && header && overlay) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenuBtn.classList.toggle('active');
+        header.classList.toggle('open');
+        overlay.classList.toggle('active');
+      });
+
+      // Close menu when clicking on nav links
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenuBtn.classList.remove('active');
+          header.classList.remove('open');
+          overlay.classList.remove('active');
+        });
+      });
+
+      // Close menu when clicking overlay
+      overlay.addEventListener('click', () => {
+        mobileMenuBtn.classList.remove('active');
+        header.classList.remove('open');
+        overlay.classList.remove('active');
+      });
+    }
+  };
+
+  initMobileMenu();
 
   // Hero Trigger Pipeline Integration Action
   const btnDeployProfile = document.getElementById('btn-deploy-profile');
